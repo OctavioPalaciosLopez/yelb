@@ -8,12 +8,11 @@ pipeline{
             steps{
                 checkout scm
             }
-            
         }
         stage('Build Docker Image'){
             steps{
                 script{
-                    app = docker.build("yelb/nginx", "/yelb-ui")
+                    app = docker.build("yelb/nginx", "./yelb-ui")
                 }
             }   
         }
