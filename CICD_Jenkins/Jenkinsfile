@@ -19,7 +19,7 @@ pipeline{
         stage('Deploy') {
             steps {
                 script{
-                    docker.withRegistry('https://720766170633.dkr.ecr.us-east-2.amazonaws.com 749295092856.dkr.ecr.us-west-1.amazonaws.com/test_registry', 'AWS_ECR') {
+                    docker.withRegistry('https://749295092856.dkr.ecr.us-west-1.amazonaws.com/test_registry', 'AWS_ECR') {
                         app.push("latest")
                     }
                 }
