@@ -12,6 +12,13 @@ pipeline{
             }
         }
         stage('Build Docker Image'){
+            when{
+                anyOf{
+                    changeset "./yelb-appserver"
+                    changeset "./yelb-db"
+                    changeset "./yelb-ui"
+                }
+            }
             steps{
                 script{
                     app = docker.build("yelb-ui-nginx:${env.BUILD_ID}", "./yelb-ui")
