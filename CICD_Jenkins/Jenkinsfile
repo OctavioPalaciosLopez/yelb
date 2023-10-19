@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    options{
+        skipStageAfterUnstable()
+    }
+    stages{
+        stage('Checking Repository'){
+            checkout scm
+        }
+
+        stage('Build Docker Image'){
+            app = docker.build("yelb/nginx", "/yelb-ui")
+        }
+    }
+}
