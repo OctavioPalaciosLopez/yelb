@@ -20,7 +20,7 @@ pipeline{
         }
         stage('Testing Docker Image'){
             steps{
-                sh ''''
+                sh '''
                     echo 'Testing Docker Image'
                     sleep 5
                     echo 'TEST SUCCESS'
