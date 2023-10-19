@@ -22,7 +22,7 @@ pipeline{
             steps {
                 script{
                     docker.withRegistry('https://749295092856.dkr.ecr.us-west-1.amazonaws.com/test_registry', 'ecr:us-west-1:AWS_ECR') {
-                        app.push("latest")
+                        app.push()
                     }
                 }
             }
