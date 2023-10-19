@@ -2,6 +2,7 @@ pipeline{
     agent any
     options{
         skipStagesAfterUnstable()
+        skipDefaultCheckout(true)
     }
     stages{
         stage('Checking Repository'){
