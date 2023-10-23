@@ -33,6 +33,11 @@ pipeline{
             }
         }
         stage('Deploy') {
+             when{
+                changeset "./yelb-appserver"
+                changeset "./yelb-db"
+                changeset "./yelb-ui"
+            }
             steps {
                 script{
                     docker.withRegistry('https://749295092856.dkr.ecr.us-west-1.amazonaws.com/yelb-ui-nginx', 'ecr:us-west-1:AWS_ECR') {
