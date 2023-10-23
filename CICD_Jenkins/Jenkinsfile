@@ -13,9 +13,9 @@ pipeline{
         }
         stage('Build Docker Image'){
             when{
-                changeset "./yelb-appserver"
-                changeset "./yelb-db"
-                changeset "./yelb-ui"
+                changeset "./yelb-appserver/**"
+                changeset "./yelb-db/**"
+                changeset "./yelb-ui/**"
             }
             steps{
                 script{
@@ -34,9 +34,9 @@ pipeline{
         }
         stage('Deploy') {
              when{
-                changeset "./yelb-appserver"
-                changeset "./yelb-db"
-                changeset "./yelb-ui"
+                changeset "./yelb-appserver/**"
+                changeset "./yelb-db/**"
+                changeset "./yelb-ui/**"
             }
             steps {
                 script{
