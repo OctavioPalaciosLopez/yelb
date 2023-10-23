@@ -2,13 +2,13 @@ pipeline{
     agent any
     options{
         skipStagesAfterUnstable()
-        //skipDefaultCheckout(true)
+        skipDefaultCheckout(true)
     }
     stages{
         stage('Checking Credetentials and Repository Changes'){
             steps{
                 sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
-                //checkout scm
+                checkout scm
             }
         }
         stage('Build Docker Image'){
