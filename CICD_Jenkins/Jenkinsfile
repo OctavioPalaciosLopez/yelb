@@ -3,9 +3,9 @@ pipeline{
     options{
         skipStagesAfterUnstable()
         skipDefaultCheckout(true)
-    }
-    when{
-        changeset "yelb-ui/**"
+                    when{
+                changeset "yelb-ui/**"
+            }
     }
     stages{
         stage('Checking Credetentials and Repository Changes'){
@@ -15,6 +15,7 @@ pipeline{
             }
         }
         stage('Build Docker Image'){
+
             steps{
                 script{
                     app = docker.build("yelb-ui-nginx:${env.BUILD_ID}", "./yelb-ui")
@@ -31,6 +32,7 @@ pipeline{
             }
         }
         stage('Deploy') {
+
             steps {
                 script{
                     docker.withRegistry('https://749295092856.dkr.ecr.us-west-1.amazonaws.com/yelb-ui-nginx', 'ecr:us-west-1:AWS_ECR') {
