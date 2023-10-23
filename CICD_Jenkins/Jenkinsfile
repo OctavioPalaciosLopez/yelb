@@ -32,7 +32,7 @@ pipeline{
         }
         stage('Deploy') {
             when{
-             changeset "./yelb-ui/Dockerfile"
+             changeset "yelb-ui/Dockerfile"
             }
             steps {
                 script{
