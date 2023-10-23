@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Build Docker Image'){
             when{
-                changeset "yelb-ui/Dockerfile"
+                changeset "yelb-ui/**"
             }
             steps{
                 script{
@@ -21,7 +21,7 @@ pipeline{
                 }
             }   
         }
-        stage('Testing Docker Image'){
+        stage('Unit-Test Docker Image'){
             steps{
                 sh '''
                     echo 'Testing Docker Image'
@@ -32,7 +32,7 @@ pipeline{
         }
         stage('Deploy') {
             when{
-             changeset "yelb-ui/Dockerfile"
+             changeset "yelb-ui/**"
             }
             steps {
                 script{
