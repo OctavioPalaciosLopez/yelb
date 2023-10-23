@@ -9,6 +9,3 @@ For the EC2 deployment model, the UI gets compiled at deployment time via runnin
 For the container deployment model, the UI gets compiled at container image build time. This actually uses a two phase build where the resulting javascript code is copied into a brand new image based off of the `nginx` official image. Check out the Dockerfile to see how that works. 
 
 For the serverless Lambda deployment model the UI gets compiled once and pushed to an S3 bucket. This (public) bucket is then used as a source for deploying a new bucket that vends the code to the browser that makes the request. This requires an additional tweak because by default the application is configured to use the IP/FQDN of the UI web server to make the application API calls. This works fine for the EC2 and container deployments because the nginx will act as a proxy but in this case the UI needs to be pre-configured with the end-point of the API Gateway that makes available the API calls (which in turns call the Lambdas). Check out the serverless deployment model for more details on how that tweak works. 
-
-
-hello
