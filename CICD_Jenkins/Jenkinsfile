@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Build Docker Image'){
             when{
-                changeset "./yelb-ui/Dockerfile"
+                changeset "yelb-ui/Dockerfile"
             }
             steps{
                 script{
