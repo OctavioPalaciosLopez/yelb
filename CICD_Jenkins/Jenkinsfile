@@ -3,26 +3,39 @@ pipeline{
     options{
         skipStagesAfterUnstable()
         skipDefaultCheckout(true)
-                    when{
-                changeset "yelb-ui/**"
-            }
     }
+
     stages{
-        stage('Checking Credetentials and Repository Changes'){
+        stage('CHEKING CREDENTIALS & REPOSITORY CHANGES'){
             steps{
                 sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
                 checkout scm
+                script{
+                    List<String> changes = getChangedFilesList()
+                    println ("Changed file list: " + changes)
+                }
             }
         }
-        stage('Build Docker Image'){
 
+        stage('BUILD DOCKER IMAGE'){
+            when{
+                changeset "yelb-appserver/**"
+                changeset "yelb-db/**"
+                changeset "yelb-ui/**"
+            }
             steps{
                 script{
                     app = docker.build("yelb-ui-nginx:${env.BUILD_ID}", "./yelb-ui")
                 }
             }   
         }
-        stage('Unit-Test Docker Image'){
+
+        stage('UNIT-TEST DOCKER IMAGE'){
+            when{
+                changeset "yelb-appserver/**"
+                changeset "yelb-db/**"
+                changeset "yelb-ui/**"
+            }
             steps{
                 sh '''
                     echo 'Testing Docker Image'
@@ -31,15 +44,30 @@ pipeline{
                 '''
             }
         }
-        stage('Deploy') {
 
+        stage('DEPLOY IN AWS_ECR') {
+            when{
+                changeset "yelb-appserver/**"
+                changeset "yelb-db/**"
+                changeset "yelb-ui/**"
+            }
             steps {
                 script{
-                    docker.withRegistry('https://749295092856.dkr.ecr.us-west-1.amazonaws.com/yelb-ui-nginx', 'ecr:us-west-1:AWS_ECR') {
+                    docker.withRegistry('https://AWS_ECR_LINK_YELB_APP.amazonaws.com/yelb-ui-nginx', 'ecr:us-west-1:AWS_CREDENTIALS_YELB_APP') {
                         app.push()
                     }
                 }
             }
         }
     }
+}
+@NonCPS
+List<String> getChangedFilesList(){
+    def changedFiles = []
+    for ( changeLogSet in currentBuild.changeSets){
+        for (entry in changeLogSet.getItems()){
+            changedFiles.addAll(entry.affectedPaths)
+        }
+    }
+    return changedFiles
 }
