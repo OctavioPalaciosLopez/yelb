@@ -8,7 +8,7 @@ pipeline{
         stage('Checking Credetentials and Repository Changes'){
             steps{
                 sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
-                checkout scm
+                //checkout scm
             }
         }
         stage('Build Docker Image'){
