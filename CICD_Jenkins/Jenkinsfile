@@ -16,7 +16,7 @@ pipeline{
                 anyOf{
                     changeset "./yelb-appserver/*"
                     changeset "./yelb-db/*"
-                    changeset "./yelb-ui/*"
+                    changeset "./yelb-ui/Dockerfile"
                 }
             }
             steps{
@@ -39,7 +39,7 @@ pipeline{
                 anyOf{
                     changeset "./yelb-appserver/*"
                     changeset "./yelb-db/*"
-                    changeset "./yelb-ui/*"
+                    changeset "./yelb-ui/Dockerfile"
                 }
             }
             steps {
