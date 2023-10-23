@@ -8,15 +8,15 @@ pipeline{
         stage('Checking Credetentials and Repository Changes'){
             steps{
                 sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
-                checkout scm: scm, poll: false, changelog: false
+                checkout scm
             }
         }
         stage('Build Docker Image'){
             when{
                 anyOf{
-                    changeset "./yelb-appserver/**"
-                    changeset "./yelb-db/**"
-                    changeset "./yelb-ui/**"
+                    changeset "./yelb-appserver/*"
+                    changeset "./yelb-db/*"
+                    changeset "./yelb-ui/*"
                 }
             }
             steps{
@@ -37,9 +37,9 @@ pipeline{
         stage('Deploy') {
             when{
                 anyOf{
-                    changeset "./yelb-appserver/**"
-                    changeset "./yelb-db/**"
-                    changeset "./yelb-ui/**"
+                    changeset "./yelb-appserver/*"
+                    changeset "./yelb-db/*"
+                    changeset "./yelb-ui/*"
                 }
             }
             steps {
