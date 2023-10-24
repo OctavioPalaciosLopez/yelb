@@ -19,9 +19,11 @@ pipeline{
 
         stage('BUILD DOCKER IMAGE'){
             when{
-                //changeset "yelb-appserver/*"
-                changeset "yelb-db/*"
-                changeset "yelb-ui/*"
+                anyOf{
+                    //changeset "yelb-appserver/*"
+                    changeset "yelb-db/*"
+                    changeset "yelb-ui/*"
+                }
             }
             steps{
                 script{
@@ -32,9 +34,11 @@ pipeline{
 
         stage('UNIT-TEST DOCKER IMAGE'){
             when{
-                //changeset "yelb-appserver/*"
-                changeset "yelb-db/*"
-                changeset "yelb-ui/*"
+                anyOf{
+                    //changeset "yelb-appserver/*"
+                    changeset "yelb-db/*"
+                    changeset "yelb-ui/*"
+                }
             }
             steps{
                 sh '''
@@ -47,9 +51,11 @@ pipeline{
 
         stage('DEPLOY IN AWS_ECR') {
             when{
-                //changeset "yelb-appserver/*"
-                changeset "yelb-db/*"
-                changeset "yelb-ui/*"
+                anyOf{
+                    //changeset "yelb-appserver/*"
+                    changeset "yelb-db/*"
+                    changeset "yelb-ui/*"
+                }
             }
             steps {
                 script{
