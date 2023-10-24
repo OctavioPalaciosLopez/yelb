@@ -53,7 +53,7 @@ pipeline{
             }
             steps {
                 script{
-                    docker.withRegistry($AWS_ECR_LINK_YELB_APP, 'ecr:us-west-1:AWS_CREDENTIALS_YELB_APP') {
+                    docker.withRegistry('https://749295092856.dkr.ecr.us-west-1.amazonaws.com/yelb-ui-nginx', 'ecr:us-west-1:AWS_CREDENTIALS_YELB_APP') {
                         app.push()
                     }
                 }
