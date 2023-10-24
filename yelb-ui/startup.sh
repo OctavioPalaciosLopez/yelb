@@ -30,5 +30,3 @@ EOF
 fi
 
 nginx -g "daemon off;"
-
-
