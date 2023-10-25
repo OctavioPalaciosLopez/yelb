@@ -78,9 +78,8 @@ List<String> getChangedFilesList(){
     }
     for (int i = 0; i <= changedFiles.size(); i++){
         for(int keepChars = 0; keepChars < changedFiles[i].length(); keepChars++){
-            println(changedFiles.size())
             String directory
-            if(changedFiles[0].charAt(keepChars) == '/'){
+            if(changedFiles[i].charAt(keepChars) == '/'){
                 directory = changedFiles[0].substring(0,keepChars)
                 println("Se rompio en:"+directory)
                 break
