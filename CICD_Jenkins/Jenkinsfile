@@ -88,6 +88,5 @@ List<String> getChangedFilesList(){
             directory = directory+changedFiles[0].charAt(removeChars)
         }*/
     }
-
     return changedFiles
 }
