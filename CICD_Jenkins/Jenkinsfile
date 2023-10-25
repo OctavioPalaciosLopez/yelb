@@ -77,7 +77,7 @@ List<String> getChangedFilesList(){
         }
     }
 
-    for(removeChars in 3){
+    for(removeChars in 0..3){
         println(changedFiles[0].charAt(removeChars))
         println(removeChars)
     }
