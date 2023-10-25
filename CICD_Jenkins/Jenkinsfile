@@ -76,7 +76,7 @@ List<String> getChangedFilesList(){
             changedFiles.addAll(entry.affectedPaths)
         }
     }
-    for (int countList = 0; countList <= changedFiles.size(); countList++){
+    for (int countList = 0; countList < changedFiles.size(); countList++){
         String directory
         for(int keepChars = 0; keepChars < changedFiles[countList].length(); keepChars++){
             if(changedFiles[countList].charAt(keepChars) == '/'){
