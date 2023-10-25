@@ -104,5 +104,6 @@ List<String> getChangedFilesList(){
             }
         }
     }
+    println(newChangedFiles2)
     return changedFiles
 }
