@@ -20,8 +20,8 @@ pipeline{
         stage('BUILD DOCKER IMAGE'){
             when{
                 anyOf{
-                    changeset "yelb-appserver/*"
-                    changeset "yelb-db/*"
+                    //changeset "yelb-appserver/*"
+                    //changeset "yelb-db/*"
                     changeset "yelb-ui/*"
                 }
             }
@@ -36,8 +36,8 @@ pipeline{
         stage('UNIT-TEST DOCKER IMAGE'){
             when{
                 anyOf{
-                    changeset "yelb-appserver/*"
-                    changeset "yelb-db/*"
+                    //changeset "yelb-appserver/*"
+                    //changeset "yelb-db/*"
                     changeset "yelb-ui/*"
                 }
             }
@@ -53,8 +53,8 @@ pipeline{
         stage('DEPLOY IN AWS_ECR') {
             when{
                 anyOf{
-                    changeset "yelb-appserver/*"
-                    changeset "yelb-db/*"
+                    //changeset "yelb-appserver/*"
+                    //changeset "yelb-db/*"
                     changeset "yelb-ui/*"
                 }
             }
@@ -76,18 +76,18 @@ List<String> getChangedFilesList(){
             changedFiles.addAll(entry.affectedPaths)
         }
     }
-
-    for(int removeChars = 0; removeChars < changedFiles[0].length(); removeChars++){
-        println(changedFiles[0].charAt(removeChars))
-        String directory
-        if(changedFiles[0].charAt(removeChars) == '/'){
-            directory = changedFiles[0].substring(0,removeChars)
-            println("Se rompio en:"+directory)
-            break
-            
-        }
-        else{
+    for (i in changedFiles.size){
+        for(int keepChars = 0; removeChars < changedFiles[i].length(); keepChars++){
+            String directory
+            if(changedFiles[0].charAt(keepChars) == '/'){
+                directory = changedFiles[0].substring(0,keepChars)
+                println("Se rompio en:"+directory)
+                break
+            }
+            else{
+            }
         }
     }
+
     return changedFiles
 }
