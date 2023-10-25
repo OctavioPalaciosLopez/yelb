@@ -91,7 +91,18 @@ List<String> getChangedFilesList(){
         }
     }
 
-    newChangedFiles = newChangedFiles.stream().distinct().collect(Collectors.toList());
-    println(newChangedFiles)
+    def newChangedFiles2 = []
+    def directory
+    for(int countList = 0; countList < newChangedFiles.size(); countList++){
+        listItem = newChangedFiles[countList]
+        for(int countList = 0; countList < newChangedFiles2.size(); countList++){
+            if(listItem != newChangedFiles2[countList]){
+                newChangedFiles2.add(listItem)
+            }
+            else{
+                break
+            }
+        }
+    }
     return changedFiles
 }
