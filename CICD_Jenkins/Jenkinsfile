@@ -76,9 +76,16 @@ List<String> getChangedFilesList(){
             changedFiles.addAll(entry.affectedPaths)
         }
     }
-    def removeRepeatItems = []
-    String a = "Hello";
-    //println(a.length())
+
+    String directory
+    for(removeChars in changedFiles[0].length()){
+        if(changedFiles[0].charAt(removeChars) =! '/'){
+            directory = directory+changedFiles[0].charAt(removeChars)
+        }else{
+            println(directory)
+            break
+        }
+    }
     println(changedFiles[0].length())
     //for(removeRepeatItems in changedFile)
     //    if(removeRepeatItems)
