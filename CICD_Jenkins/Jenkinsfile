@@ -76,11 +76,11 @@ List<String> getChangedFilesList(){
             changedFiles.addAll(entry.affectedPaths)
         }
     }
-    for (int i = 0; i <= changedFiles.size(); i++){
-        for(int keepChars = 0; keepChars < changedFiles[i].length(); keepChars++){
-            String directory
-            if(changedFiles[i].charAt(keepChars) == '/'){
-                directory = changedFiles[0].substring(0,keepChars)
+    for (int countList = 0; countList <= changedFiles.size(); countList++){
+        String directory
+        for(int keepChars = 0; keepChars < changedFiles[countList].length(); keepChars++){
+            if(changedFiles[countList].charAt(keepChars) == '/'){
+                directory = changedFiles[countList].substring(0,keepChars)
                 println("Se rompio en:"+directory)
                 break
             }
