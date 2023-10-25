@@ -78,7 +78,7 @@ List<String> getChangedFilesList(){
     }
     //for (i in changedFiles.size){
         for(int keepChars = 0; keepChars < changedFiles[0].length(); keepChars++){
-            println(changedFiles.size)
+            println(changedFiles.size())
             String directory
             if(changedFiles[0].charAt(keepChars) == '/'){
                 directory = changedFiles[0].substring(0,keepChars)
