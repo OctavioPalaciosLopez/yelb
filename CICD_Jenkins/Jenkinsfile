@@ -79,14 +79,15 @@ List<String> getChangedFilesList(){
 
     String directory
     for(removeChars in changedFiles[0].length()){
-        if(changedFiles[0].charAt(removeChars) =! '/'){
-            directory = directory+changedFiles[0].charAt(removeChars)
-        }else{
+        if(changedFiles[0].charAt(removeChars) == '/'){
             println(directory)
             break
+            
+        }else{
+            directory = directory+changedFiles[0].charAt(removeChars)
         }
     }
-    println(changedFiles[0].length())
+    //println(changedFiles[0].length())
     //for(removeRepeatItems in changedFile)
     //    if(removeRepeatItems)
     return changedFiles
