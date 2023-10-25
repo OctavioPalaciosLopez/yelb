@@ -78,14 +78,14 @@ List<String> getChangedFilesList(){
     }
 
     for(int removeChars = 0; removeChars < changedFiles[0].length(); removeChars++){
-        //println(changedFiles[0].charAt(removeChars))
-        if(changedFiles[0].charAt(removeChars) == '/'){
+        println(changedFiles[0].charAt(removeChars))
+        /*if(changedFiles[0].charAt(removeChars) == '/'){
             println(directory)
             break
             
         }else{
             directory = directory+changedFiles[0].charAt(removeChars)
-        }
+        }*/
     }
     return changedFiles
 }
