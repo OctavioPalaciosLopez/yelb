@@ -93,16 +93,23 @@ List<String> getChangedFilesList(){
 
     def newChangedFiles2 = []
     def directory
+    def equalItems = 0
+    newChangedFiles2.add(newChangedFiles[0])
+
     for(int countList = 0; countList < newChangedFiles.size(); countList++){
         listItem = newChangedFiles[countList]
         print(listItem)
         for(int countList2 = 0; countList2 < newChangedFiles2.size(); countList2++){
-            if(listItem != newChangedFiles2[countList2]){
-                newChangedFiles2.add(listItem)
+            if(listItem == newChangedFiles2[countList2]){
+                equalItems++
             }
             else{
-               
             }
+        }
+        if(equalItems == 0){
+            newChangedFiles2.add(newChangedFiles[countList])
+        }else{
+            equalItems = 0
         }
     }
     println(newChangedFiles2)
