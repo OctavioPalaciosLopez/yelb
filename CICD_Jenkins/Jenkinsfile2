@@ -77,4 +77,3 @@ List<String> getChangedFilesList(){
     }
     return changedFiles
 }
-
