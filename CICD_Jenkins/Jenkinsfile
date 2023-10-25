@@ -83,12 +83,12 @@ List<String> getChangedFilesList(){
         String letter = changedFiles[0].charAt(removeChars)
         println("Letra:" + letter)
         if(letter == '/'){
+            directory = changedFiles[0].substring(0,removeChars)
             println("Se rompio en:"+directory)
             break
             
         }
         else{
-            directory = directory+changedFiles[0].charAt(removeChars)
         }
     }
     return changedFiles
