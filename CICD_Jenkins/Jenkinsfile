@@ -76,18 +76,24 @@ List<String> getChangedFilesList(){
             changedFiles.addAll(entry.affectedPaths)
         }
     }
+
+    def newChangedFiles = []
     for (int countList = 0; countList < changedFiles.size(); countList++){
-        String directory
+        String directories
         for(int keepChars = 0; keepChars < changedFiles[countList].length(); keepChars++){
             if(changedFiles[countList].charAt(keepChars) == '/'){
-                directory = changedFiles[countList].substring(0,keepChars)
-                println("Se rompio en:"+directory)
+                directories = changedFiles[countList].substring(0,keepChars)
+                newChangedFiles.add(directories)
                 break
             }
             else{
             }
         }
     }
+
+    newChangedFiles = newChangedFiles.stream().distinct().collect(Collectors.toList());
+    println(newChangedFiles)
+}
 
     return changedFiles
 }
