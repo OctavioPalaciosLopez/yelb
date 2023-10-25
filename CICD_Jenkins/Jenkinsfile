@@ -95,8 +95,8 @@ List<String> getChangedFilesList(){
     def directory
     for(int countList = 0; countList < newChangedFiles.size(); countList++){
         listItem = newChangedFiles[countList]
-        for(int countList = 0; countList < newChangedFiles2.size(); countList++){
-            if(listItem != newChangedFiles2[countList]){
+        for(int countList2 = 0; countList2 < newChangedFiles2.size(); countList2++){
+            if(listItem != newChangedFiles2[countList2]){
                 newChangedFiles2.add(listItem)
             }
             else{
