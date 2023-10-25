@@ -77,7 +77,8 @@ List<String> getChangedFilesList(){
         }
     }
     def removeRepeatItems = []
-    println (changedFile[0].length())
+    String a = "Hello";
+    println(a.length());
     //for(removeRepeatItems in changedFile)
     //    if(removeRepeatItems)
     return changedFiles
